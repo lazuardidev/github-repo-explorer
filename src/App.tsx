@@ -6,8 +6,8 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className='p-4 sm:px-0 bg-white'>
+    <div className='p-4 bg-white'>
+      <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Routes>
             {routes.map((route) => (
@@ -19,8 +19,8 @@ function App() {
             ))}
           </Routes>
         </BrowserRouter>
-      </div>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </div>
   );
 }
 

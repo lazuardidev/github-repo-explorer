@@ -8,9 +8,9 @@ interface RepoListProps {
 
 const RepoList: React.FC<RepoListProps> = ({ repos }) => (
   <>
-    {repos.map((repo, idx) => (
+    {repos.map((repo) => (
       <div
-        key={repo.id || idx}
+        key={repo.id}
         className='min-h-30 mb-3 last:mb-0 p-4 bg-[#e0e0e0] rounded flex flex-col gap-1'
       >
         <div className='flex items-center justify-between mb-1 w-full'>
@@ -18,7 +18,7 @@ const RepoList: React.FC<RepoListProps> = ({ repos }) => (
             {repo.name}
           </span>
           <span className='flex-shrink-0 flex items-center gap-1 text-gray-600 font-medium'>
-            {repo.stargazers_count ?? 0}
+            {repo.stargazers_count || 0}
             <Star size={18} className='text-black' fill='black' />
           </span>
         </div>

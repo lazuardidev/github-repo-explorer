@@ -20,7 +20,7 @@ const useHome = () => {
   });
 
   const {
-    data: usersRepos,
+    data: usersRepos = [],
     isLoading: isUsersReposLoading,
     isError: isUsersReposError,
     error: usersReposError,
