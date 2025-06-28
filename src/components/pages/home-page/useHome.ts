@@ -1,19 +1,21 @@
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getSearchUsers, getUsersRepos } from './helper';
 
-const useHome = (searchTerm: string, selectedUser: string | null) => {
-  const perPageUsers = 5;
-  const pageUsers = 1;
+const useHome = () => {
+  const [searched, setSearched] = useState(false);
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const [selectedUser, setSelectedUser] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const {
     data: searchUsers,
     isLoading: isSearchUsersLoading,
     isError: isSearchUsersError,
     error: searchUsersError,
-    refetch: refetchSearchUsers,
   } = useQuery({
-    queryKey: ['searchUsers', searchTerm, perPageUsers, pageUsers],
-    queryFn: () => getSearchUsers(searchTerm, perPageUsers, pageUsers),
+    queryKey: ['searchUsers', searchTerm],
+    queryFn: () => getSearchUsers(searchTerm),
     enabled: !!searchTerm,
   });
 
@@ -22,7 +24,6 @@ const useHome = (searchTerm: string, selectedUser: string | null) => {
     isLoading: isUsersReposLoading,
     isError: isUsersReposError,
     error: usersReposError,
-    refetch: refetchUsersRepos,
   } = useQuery({
     queryKey: ['usersRepos', selectedUser],
     queryFn: () =>
@@ -30,17 +31,38 @@ const useHome = (searchTerm: string, selectedUser: string | null) => {
     enabled: !!selectedUser,
   });
 
+  const handleSearch = (term: string) => {
+    setSearched(true);
+    setExpanded(null);
+    setSelectedUser(null);
+    setSearchTerm(term);
+  };
+
+  const handleExpand = (username: string) => {
+    if (expanded === username) {
+      setExpanded(null);
+      setSelectedUser(null);
+    } else {
+      setExpanded(username);
+      setSelectedUser(username);
+    }
+  };
+
   return {
     searchUsers,
     isSearchUsersLoading,
     isSearchUsersError,
     searchUsersError,
-    refetchSearchUsers,
     usersRepos,
     isUsersReposLoading,
     isUsersReposError,
     usersReposError,
-    refetchUsersRepos,
+    searched,
+    searchTerm,
+    expanded,
+    handleSearch,
+    handleExpand,
   };
 };
+
 export default useHome;

@@ -7,17 +7,19 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
-          {routes.map((route) => (
-            <Route
-              key={route.path}
-              path={route.path}
-              element={<route.component />}
-            />
-          ))}
-        </Routes>
-      </BrowserRouter>
+      <div className='p-4 sm:px-0 bg-white'>
+        <BrowserRouter>
+          <Routes>
+            {routes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={<route.component />}
+              />
+            ))}
+          </Routes>
+        </BrowserRouter>
+      </div>
     </QueryClientProvider>
   );
 }
