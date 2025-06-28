@@ -2,6 +2,10 @@
 
 **GitHub Repo Explorer** is a modern web application built with React and TypeScript that allows you to search for GitHub users and explore their public repositories. Enter a username to quickly find up to 5 matching GitHub users, then click on a user to view all their repositories, including star counts and descriptions. The app features a clean, responsive UI, robust error handling, and comprehensive test coverage.
 
+## Live Demo
+
+[https://lazuardidev.github.io/github-repo-explorer/](https://lazuardidev.github.io/github-repo-explorer/)
+
 ## Screenshots
 
 |        Home (Search)         |          User Results           |       User Repositories       |
