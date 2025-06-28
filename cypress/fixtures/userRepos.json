@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1001,
+    "name": "repo1",
+    "description": "Test repository one",
+    "stargazers_count": 42
+  },
+  {
+    "id": 1002,
+    "name": "repo2",
+    "description": "Second test repo",
+    "stargazers_count": 17
+  }
+]

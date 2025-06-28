@@ -14,6 +14,7 @@ export default defineConfig({
       reporter: ['text', 'html'],
       reportsDirectory: 'coverage',
       exclude: [
+        'cypress/**',
         'src/main.tsx',
         'src/App.tsx',
         'src/config/**',

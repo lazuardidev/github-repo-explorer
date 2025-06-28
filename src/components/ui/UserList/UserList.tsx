@@ -1,7 +1,7 @@
-import type { GitHubRepository, GitHubUser } from '../../../interfaces';
 import React from 'react';
-import RepoList from '../RepoList';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import type { GitHubRepository, GitHubUser } from '../../../interfaces';
+import RepoList from '../RepoList';
 
 interface UserListProps {
   users: GitHubUser[];
@@ -29,6 +29,7 @@ const UserList: React.FC<UserListProps> = ({
         className='mb-4 bg-gray-200 rounded overflow-hidden'
       >
         <div
+          data-testid={`user-${user.login}`}
           className='flex items-center justify-between px-4 py-2 cursor-pointer hover:bg-gray-300'
           onClick={() => onExpand(user.login)}
         >

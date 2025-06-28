@@ -34,7 +34,9 @@ const HomePage = () => {
             </div>
           ) : isSearchUsersError ? (
             <div className='text-center text-red-500 py-8 bg-white rounded shadow'>
-              {String(searchUsersError)}
+              {searchUsersError instanceof Error
+                ? searchUsersError.message
+                : 'Error fetching users'}
             </div>
           ) : !searchUsers || searchUsers.length === 0 ? (
             <div className='text-center text-gray-400 py-8 bg-white rounded shadow'>
