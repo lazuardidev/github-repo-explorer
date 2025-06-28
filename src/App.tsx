@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { routes } from './routes';
 
 const queryClient = new QueryClient();
@@ -8,7 +8,6 @@ function App() {
   return (
     <div className='p-4 bg-white'>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
           <Routes>
             {routes.map((route) => (
               <Route
@@ -18,7 +17,6 @@ function App() {
               />
             ))}
           </Routes>
-        </BrowserRouter>
       </QueryClientProvider>
     </div>
   );
